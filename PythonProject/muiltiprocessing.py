@@ -210,7 +210,7 @@ def measure(f,data):
     s=time.perf_counter()
     f(data)
     e=time.perf_counter()
-    return e-s
+    return (e-s)
 
 def read_sizes():
     sizes=[]

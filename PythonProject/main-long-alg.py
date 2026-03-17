@@ -2,6 +2,7 @@ import random
 import csv
 import time
 
+# ----data structures(simple lists and linked lists)----
 class Node:
     def __init__(self,val):
         self.val=val
@@ -26,6 +27,8 @@ class LinkedList:
             arr.append(cur.val)
             cur=cur.next
         return arr
+
+# ----sorting algorithms----
 
 def bubble_sort(a):
     a=a.copy()
@@ -150,6 +153,8 @@ def counting_digit(a,exp):
         i-=1
     return output
 
+# ----generating diffrent types of lists(random,half sorted, etc.)----
+
 def random_list(n):
     return [random.randint(0,100000) for _ in range(n)]
 
@@ -175,11 +180,15 @@ def half_sorted(n):
 def flat_list(n):
     return [random.randint(0,5) for _ in range(n)]
 
+# ----time measurement----
+
 def measure(func,data):
     start=time.perf_counter()
     func(data)
     end=time.perf_counter()
     return end-start
+
+# ----choosing the sizes i want for my data structures----
 
 def load_sizes(file):
     sizes=[]
@@ -188,6 +197,7 @@ def load_sizes(file):
             sizes.append(int(line.strip()))
     return sizes
 
+# ----data for the csv file----
 algorithms={
 "bubble":bubble_sort,
 "selection":selection_sort,
@@ -209,16 +219,16 @@ datasets={
 "flat":flat_list
 }
 
+# ----writing in the csv file using the sizes and forming the random inputs----
+
 sizes=load_sizes("sizes.txt")
 
 with open("results.csv","w",newline="") as f:
     writer=csv.writer(f)
     writer.writerow(["algorithm","structure","dataset","size","time"])
-
     for size in sizes:
         for dtype,gen in datasets.items():
             data=gen(size)
-
             ll=LinkedList(data)
             list_data=data.copy()
             ll_data=ll.to_list()
