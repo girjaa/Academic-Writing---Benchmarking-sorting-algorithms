@@ -1,6 +1,3 @@
-Here is a **clean, professional `README.md`** you can place in your repository
-(ready to paste directly into GitHub).
-
 ---
 
 # Benchmarking Sorting Algorithms
